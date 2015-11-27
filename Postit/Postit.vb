@@ -58,4 +58,40 @@ Public Class PostitFm
         ConfigFm.HeightTb.Value = Me.Size.Height
     End Sub
 
+    Public Sub SetNotify(Time As TimeSpan)
+        NotifyTimerTm.Interval = Time.TotalMilliseconds
+        TrayNotifyNi.Visible = True
+        NotifyTimerTm.Enabled = True
+    End Sub
+
+    Public Sub CancelNotify()
+        NotifyTimerTm.Enabled = False
+    End Sub
+
+    Private Sub NotifyTimerTm_Tick(sender As Object, e As EventArgs) Handles NotifyTimerTm.Tick
+        Dim NotifyText As String
+
+        ' バルーンチップに付箋の内容を設定
+        Try
+            NotifyText = Strings.Left(ContentRtb.Text, 10)
+        Catch ex As ArgumentException
+            NotifyText = ContentRtb.Text
+        End Try
+
+        If NotifyText = "" Then NotifyText = "空の付箋"
+        TrayNotifyNi.BalloonTipText = NotifyText
+
+        TrayNotifyNi.ShowBalloonTip(30000)
+
+        TrayIconPutOutTm.Interval = 60000
+        TrayIconPutOutTm.Enabled = True
+        NotifyTimerTm.Enabled = False
+    End Sub
+
+    Private Sub TrayIconPutOutTm_Tick(sender As Object, e As EventArgs) Handles TrayIconPutOutTm.Tick
+        If NotifyTimerTm.Enabled = False Then
+            TrayNotifyNi.Visible = False
+        End If
+        TrayIconPutOutTm.Enabled = False
+    End Sub
 End Class

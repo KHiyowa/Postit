@@ -27,7 +27,6 @@ Partial Class ConfigFm
         Me.CloseBtn = New System.Windows.Forms.Button()
         Me.ConfigTc = New System.Windows.Forms.TabControl()
         Me.GeneralTp = New System.Windows.Forms.TabPage()
-        Me.ReminderTp = New System.Windows.Forms.TabPage()
         Me.LockCb = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -40,19 +39,20 @@ Partial Class ConfigFm
         Me.TopMostCb = New System.Windows.Forms.CheckBox()
         Me.ChangeFontBtn = New System.Windows.Forms.Button()
         Me.ChangeColorBtn = New System.Windows.Forms.Button()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.TimerTb = New System.Windows.Forms.CheckBox()
-        Me.NotifyTimeDtp = New System.Windows.Forms.DateTimePicker()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Plus10minBtn = New System.Windows.Forms.Button()
-        Me.Plus1hBtn = New System.Windows.Forms.Button()
-        Me.NowBtn = New System.Windows.Forms.Button()
+        Me.ReminderTp = New System.Windows.Forms.TabPage()
         Me.ToggleAMPMBtn = New System.Windows.Forms.Button()
+        Me.NowBtn = New System.Windows.Forms.Button()
+        Me.Plus1hBtn = New System.Windows.Forms.Button()
+        Me.Plus10minBtn = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.NotifyTimeDtp = New System.Windows.Forms.DateTimePicker()
+        Me.TimerTb = New System.Windows.Forms.CheckBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.ConfigTc.SuspendLayout()
         Me.GeneralTp.SuspendLayout()
-        Me.ReminderTp.SuspendLayout()
         CType(Me.HeightTb, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OpacityTb, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ReminderTp.SuspendLayout()
         Me.SuspendLayout()
         '
         'CloseBtn
@@ -95,24 +95,6 @@ Partial Class ConfigFm
         Me.GeneralTp.Size = New System.Drawing.Size(217, 193)
         Me.GeneralTp.TabIndex = 0
         Me.GeneralTp.Text = "一般"
-        '
-        'ReminderTp
-        '
-        Me.ReminderTp.BackColor = System.Drawing.SystemColors.Control
-        Me.ReminderTp.Controls.Add(Me.ToggleAMPMBtn)
-        Me.ReminderTp.Controls.Add(Me.NowBtn)
-        Me.ReminderTp.Controls.Add(Me.Plus1hBtn)
-        Me.ReminderTp.Controls.Add(Me.Plus10minBtn)
-        Me.ReminderTp.Controls.Add(Me.Label1)
-        Me.ReminderTp.Controls.Add(Me.NotifyTimeDtp)
-        Me.ReminderTp.Controls.Add(Me.TimerTb)
-        Me.ReminderTp.Controls.Add(Me.Label7)
-        Me.ReminderTp.Location = New System.Drawing.Point(4, 22)
-        Me.ReminderTp.Name = "ReminderTp"
-        Me.ReminderTp.Padding = New System.Windows.Forms.Padding(3)
-        Me.ReminderTp.Size = New System.Drawing.Size(217, 193)
-        Me.ReminderTp.TabIndex = 1
-        Me.ReminderTp.Text = "リマインダ"
         '
         'LockCb
         '
@@ -232,14 +214,78 @@ Partial Class ConfigFm
         Me.ChangeColorBtn.Text = "背景色を変更"
         Me.ChangeColorBtn.UseVisualStyleBackColor = True
         '
-        'Label7
+        'ReminderTp
         '
-        Me.Label7.Location = New System.Drawing.Point(6, 16)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(205, 23)
-        Me.Label7.TabIndex = 0
-        Me.Label7.Text = "指定時刻に通知領域でお知らせします"
-        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ReminderTp.BackColor = System.Drawing.SystemColors.Control
+        Me.ReminderTp.Controls.Add(Me.ToggleAMPMBtn)
+        Me.ReminderTp.Controls.Add(Me.NowBtn)
+        Me.ReminderTp.Controls.Add(Me.Plus1hBtn)
+        Me.ReminderTp.Controls.Add(Me.Plus10minBtn)
+        Me.ReminderTp.Controls.Add(Me.Label1)
+        Me.ReminderTp.Controls.Add(Me.NotifyTimeDtp)
+        Me.ReminderTp.Controls.Add(Me.TimerTb)
+        Me.ReminderTp.Controls.Add(Me.Label7)
+        Me.ReminderTp.Location = New System.Drawing.Point(4, 22)
+        Me.ReminderTp.Name = "ReminderTp"
+        Me.ReminderTp.Padding = New System.Windows.Forms.Padding(3)
+        Me.ReminderTp.Size = New System.Drawing.Size(217, 193)
+        Me.ReminderTp.TabIndex = 1
+        Me.ReminderTp.Text = "リマインダ"
+        '
+        'ToggleAMPMBtn
+        '
+        Me.ToggleAMPMBtn.Location = New System.Drawing.Point(105, 86)
+        Me.ToggleAMPMBtn.Name = "ToggleAMPMBtn"
+        Me.ToggleAMPMBtn.Size = New System.Drawing.Size(75, 23)
+        Me.ToggleAMPMBtn.TabIndex = 7
+        Me.ToggleAMPMBtn.Text = "12時間反転"
+        Me.ToggleAMPMBtn.UseVisualStyleBackColor = True
+        '
+        'NowBtn
+        '
+        Me.NowBtn.Location = New System.Drawing.Point(31, 86)
+        Me.NowBtn.Name = "NowBtn"
+        Me.NowBtn.Size = New System.Drawing.Size(75, 23)
+        Me.NowBtn.TabIndex = 6
+        Me.NowBtn.Text = "現在時刻"
+        Me.NowBtn.UseVisualStyleBackColor = True
+        '
+        'Plus1hBtn
+        '
+        Me.Plus1hBtn.Location = New System.Drawing.Point(105, 115)
+        Me.Plus1hBtn.Name = "Plus1hBtn"
+        Me.Plus1hBtn.Size = New System.Drawing.Size(75, 23)
+        Me.Plus1hBtn.TabIndex = 5
+        Me.Plus1hBtn.Text = "+1時間"
+        Me.Plus1hBtn.UseVisualStyleBackColor = True
+        '
+        'Plus10minBtn
+        '
+        Me.Plus10minBtn.Location = New System.Drawing.Point(31, 115)
+        Me.Plus10minBtn.Name = "Plus10minBtn"
+        Me.Plus10minBtn.Size = New System.Drawing.Size(75, 23)
+        Me.Plus10minBtn.TabIndex = 4
+        Me.Plus10minBtn.Text = "+10分"
+        Me.Plus10minBtn.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(29, 54)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(53, 12)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "通知時刻"
+        '
+        'NotifyTimeDtp
+        '
+        Me.NotifyTimeDtp.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        Me.NotifyTimeDtp.Location = New System.Drawing.Point(105, 49)
+        Me.NotifyTimeDtp.Name = "NotifyTimeDtp"
+        Me.NotifyTimeDtp.ShowUpDown = True
+        Me.NotifyTimeDtp.Size = New System.Drawing.Size(76, 19)
+        Me.NotifyTimeDtp.TabIndex = 2
+        Me.NotifyTimeDtp.Value = New Date(2015, 11, 27, 2, 54, 51, 0)
         '
         'TimerTb
         '
@@ -252,60 +298,14 @@ Partial Class ConfigFm
         Me.TimerTb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.TimerTb.UseVisualStyleBackColor = True
         '
-        'NotifyTimeDtp
+        'Label7
         '
-        Me.NotifyTimeDtp.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.NotifyTimeDtp.Location = New System.Drawing.Point(105, 49)
-        Me.NotifyTimeDtp.Name = "NotifyTimeDtp"
-        Me.NotifyTimeDtp.ShowUpDown = True
-        Me.NotifyTimeDtp.Size = New System.Drawing.Size(76, 19)
-        Me.NotifyTimeDtp.TabIndex = 2
-        Me.NotifyTimeDtp.Value = New Date(2015, 11, 27, 2, 54, 51, 0)
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(29, 54)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(53, 12)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "通知時刻"
-        '
-        'Plus10minBtn
-        '
-        Me.Plus10minBtn.Location = New System.Drawing.Point(31, 115)
-        Me.Plus10minBtn.Name = "Plus10minBtn"
-        Me.Plus10minBtn.Size = New System.Drawing.Size(75, 23)
-        Me.Plus10minBtn.TabIndex = 4
-        Me.Plus10minBtn.Text = "+10分"
-        Me.Plus10minBtn.UseVisualStyleBackColor = True
-        '
-        'Plus1hBtn
-        '
-        Me.Plus1hBtn.Location = New System.Drawing.Point(105, 115)
-        Me.Plus1hBtn.Name = "Plus1hBtn"
-        Me.Plus1hBtn.Size = New System.Drawing.Size(75, 23)
-        Me.Plus1hBtn.TabIndex = 5
-        Me.Plus1hBtn.Text = "+1時間"
-        Me.Plus1hBtn.UseVisualStyleBackColor = True
-        '
-        'NowBtn
-        '
-        Me.NowBtn.Location = New System.Drawing.Point(31, 86)
-        Me.NowBtn.Name = "NowBtn"
-        Me.NowBtn.Size = New System.Drawing.Size(75, 23)
-        Me.NowBtn.TabIndex = 6
-        Me.NowBtn.Text = "現在時刻"
-        Me.NowBtn.UseVisualStyleBackColor = True
-        '
-        'ToggleAMPMBtn
-        '
-        Me.ToggleAMPMBtn.Location = New System.Drawing.Point(105, 86)
-        Me.ToggleAMPMBtn.Name = "ToggleAMPMBtn"
-        Me.ToggleAMPMBtn.Size = New System.Drawing.Size(75, 23)
-        Me.ToggleAMPMBtn.TabIndex = 7
-        Me.ToggleAMPMBtn.Text = "12時間反転"
-        Me.ToggleAMPMBtn.UseVisualStyleBackColor = True
+        Me.Label7.Location = New System.Drawing.Point(6, 16)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(205, 23)
+        Me.Label7.TabIndex = 0
+        Me.Label7.Text = "指定時刻に通知領域でお知らせします"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ConfigFm
         '
@@ -322,10 +322,10 @@ Partial Class ConfigFm
         Me.ConfigTc.ResumeLayout(False)
         Me.GeneralTp.ResumeLayout(False)
         Me.GeneralTp.PerformLayout()
-        Me.ReminderTp.ResumeLayout(False)
-        Me.ReminderTp.PerformLayout()
         CType(Me.HeightTb, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OpacityTb, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ReminderTp.ResumeLayout(False)
+        Me.ReminderTp.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

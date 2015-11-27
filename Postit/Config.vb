@@ -1,4 +1,9 @@
 ﻿Public Class ConfigFm
+
+    Private Sub ConfigFm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If PostitFm.NotifyTimerTm.Enabled = False Then SetCurrentTime()
+    End Sub
+
     Private Sub ChangeColorBtn_Click(sender As Object, e As EventArgs)
         ' 設定中の付箋の色を変える。
         ' 色設定画面の呼出
@@ -41,11 +46,23 @@
     End Sub
 
     Private Sub TimerTb_CheckedChanged(sender As Object, e As EventArgs) Handles TimerTb.CheckedChanged
+        Dim WillSetDateTime As DateTime = NotifyTimeDtp.Value
+
         If TimerTb.Checked = True Then
+            If WillSetDateTime.CompareTo(DateTime.Now) < 0 Then
+                WillSetDateTime = WillSetDateTime.AddDays(1.0)
+            End If
+            PostitFm.SetNotify(WillSetDateTime.Subtract(DateTime.Now))
             TimerTb.Text = "通知は有効です"
         Else
+            PostitFm.CancelNotify()
             TimerTb.Text = "通知を有効にする"
+
         End If
+    End Sub
+
+    Private Sub NowBtn_Click(sender As Object, e As EventArgs) Handles NowBtn.Click
+        SetCurrentTime()
     End Sub
 
     Private Sub Plus10minBtn_Click(sender As Object, e As EventArgs) Handles Plus10minBtn.Click
@@ -62,7 +79,7 @@
         Hour = (Hour + (Minute \ 60)) Mod 24
         Minute = Minute Mod 60
 
-        SetTime(Hour, Minute, Time.Second)
+        SetTime(Hour, Minute)
 
     End Sub
 
@@ -75,16 +92,34 @@
 
         Hour = (Hour + 1) Mod 24
 
-        SetTime(Hour, Time.Minute, Time.Second)
+        SetTime(Hour, Time.Minute)
 
     End Sub
 
-    Private Sub SetTime(Hour As Integer, Minute As Integer, Second As Integer)
+    Private Sub ToggleAMPMBtn_Click(sender As Object, e As EventArgs) Handles ToggleAMPMBtn.Click
+        Dim Time As DateTime
+        Dim Hour As Integer
+
+        Time = NotifyTimeDtp.Text
+        Hour = Time.Hour
+
+        Hour = (Hour + 12) Mod 24
+
+        SetTime(Hour, Time.Minute)
+    End Sub
+
+    Private Sub SetTime(Hour As Integer, Minute As Integer)
+
         NotifyTimeDtp.Text = DateTime.Parse(Hour.ToString + ":" +
-                                    Minute.ToString + ":" + Second.ToString)
+                                    Minute.ToString + ":" + "00")
     End Sub
 
     Private Sub SetCurrentTime()
+        Dim Time As DateTime = DateTime.Now
+        Dim Hour As Integer = Time.Hour
+        Dim Minute As Integer = Time.Minute
+
+        SetTime(Hour, Minute)
 
     End Sub
 
