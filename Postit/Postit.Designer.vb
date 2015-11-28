@@ -22,7 +22,9 @@ Partial Class PostitFm
     'コード エディターを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.ContentRtb = New System.Windows.Forms.RichTextBox()
+        Me.NotifyTimerTm = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'ContentRtb
@@ -34,6 +36,9 @@ Partial Class PostitFm
         Me.ContentRtb.Size = New System.Drawing.Size(250, 200)
         Me.ContentRtb.TabIndex = 0
         Me.ContentRtb.Text = ""
+        '
+        'NotifyTimerTm
+        '
         '
         'PostitFm
         '
@@ -51,4 +56,5 @@ Partial Class PostitFm
     End Sub
 
     Friend WithEvents ContentRtb As RichTextBox
+    Friend WithEvents NotifyTimerTm As Timer
 End Class

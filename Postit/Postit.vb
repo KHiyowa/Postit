@@ -58,4 +58,28 @@ Public Class PostitFm
         ConfigFm.HeightTb.Value = Me.Size.Height
     End Sub
 
+    Public Sub SetNotify(Time As TimeSpan)
+        NotifyTimerTm.Interval = Time.TotalMilliseconds
+        NotifyTimerTm.Enabled = True
+    End Sub
+
+    Public Sub CancelNotify()
+        NotifyTimerTm.Enabled = False
+    End Sub
+
+    Private Sub NotifyTimerTm_Tick(sender As Object, e As EventArgs) Handles NotifyTimerTm.Tick
+        Dim NotifyText As String
+
+        ' メッセージボックスに付箋の内容を設定
+        Try
+            NotifyText = Strings.Left(ContentRtb.Text, 10) + "…"
+        Catch ex As ArgumentException
+            NotifyText = ContentRtb.Text
+        End Try
+
+        NotifyTimerTm.Enabled = False
+        MsgBox("付箋:" + vbCrLf + NotifyText + vbCrLf + "の設定時刻になりました。" _
+               , vbOKOnly + vbInformation, "Postit")
+    End Sub
+
 End Class
