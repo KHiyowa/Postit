@@ -300,12 +300,12 @@ Partial Class ConfigFm
         '
         'Label7
         '
-        Me.Label7.Location = New System.Drawing.Point(6, 16)
+        Me.Label7.Location = New System.Drawing.Point(15, 3)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(205, 23)
+        Me.Label7.Size = New System.Drawing.Size(183, 30)
         Me.Label7.TabIndex = 0
-        Me.Label7.Text = "指定時刻に通知領域でお知らせします"
-        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label7.Text = "指定時刻になるとメッセージボックスでお知らせします"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ConfigFm
         '

@@ -1,6 +1,7 @@
 ﻿Public Class ConfigFm
 
     Private Sub ConfigFm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' ウインドウを開いたとき、リマインダに現在時刻を代入
         If PostitFm.NotifyTimerTm.Enabled = False Then SetCurrentTime()
     End Sub
 
@@ -48,6 +49,7 @@
     Private Sub TimerTb_CheckedChanged(sender As Object, e As EventArgs) Handles TimerTb.CheckedChanged
         Dim WillSetDateTime As DateTime = NotifyTimeDtp.Value
 
+        ' 通知の有効/無効を切り替える
         If TimerTb.Checked = True Then
             If WillSetDateTime.CompareTo(DateTime.Now) < 0 Then
                 WillSetDateTime = WillSetDateTime.AddDays(1.0)
@@ -62,6 +64,7 @@
     End Sub
 
     Private Sub NowBtn_Click(sender As Object, e As EventArgs) Handles NowBtn.Click
+        ' 時刻欄に現在時刻を入力
         SetCurrentTime()
     End Sub
 
@@ -70,6 +73,7 @@
         Dim Hour As Integer
         Dim Minute As Integer
 
+        ' 表示中の時刻に10分を足して入力
         Time = NotifyTimeDtp.Text
         Hour = Time.Hour
         Minute = Time.Minute
@@ -87,6 +91,7 @@
         Dim Time As DateTime
         Dim Hour As Integer
 
+        ' 表示中の時刻に1時間足して代入
         Time = NotifyTimeDtp.Text
         Hour = Time.Hour
 
@@ -100,6 +105,8 @@
         Dim Time As DateTime
         Dim Hour As Integer
 
+        ' 表示中の時刻に12時間足して代入
+        ' ここで継承が使えるとかっこいいかもしれない
         Time = NotifyTimeDtp.Text
         Hour = Time.Hour
 
@@ -109,12 +116,13 @@
     End Sub
 
     Private Sub SetTime(Hour As Integer, Minute As Integer)
-
+        ' 時と分を入力。秒は00とする。
         NotifyTimeDtp.Text = DateTime.Parse(Hour.ToString + ":" +
                                     Minute.ToString + ":" + "00")
     End Sub
 
     Private Sub SetCurrentTime()
+        ' 現在時刻を取得して秒数を00にしてから代入
         Dim Time As DateTime = DateTime.Now
         Dim Hour As Integer = Time.Hour
         Dim Minute As Integer = Time.Minute

@@ -23,11 +23,8 @@ Partial Class PostitFm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PostitFm))
         Me.ContentRtb = New System.Windows.Forms.RichTextBox()
         Me.NotifyTimerTm = New System.Windows.Forms.Timer(Me.components)
-        Me.TrayNotifyNi = New System.Windows.Forms.NotifyIcon(Me.components)
-        Me.TrayIconPutOutTm = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'ContentRtb
@@ -41,16 +38,6 @@ Partial Class PostitFm
         Me.ContentRtb.Text = ""
         '
         'NotifyTimerTm
-        '
-        '
-        'TrayNotifyNi
-        '
-        Me.TrayNotifyNi.BalloonTipText = "Postit"
-        Me.TrayNotifyNi.BalloonTipTitle = "Postit"
-        Me.TrayNotifyNi.Icon = CType(resources.GetObject("TrayNotifyNi.Icon"), System.Drawing.Icon)
-        Me.TrayNotifyNi.Text = "お知らせ"
-        '
-        'TrayIconPutOutTm
         '
         '
         'PostitFm
@@ -70,6 +57,4 @@ Partial Class PostitFm
 
     Friend WithEvents ContentRtb As RichTextBox
     Friend WithEvents NotifyTimerTm As Timer
-    Friend WithEvents TrayNotifyNi As NotifyIcon
-    Friend WithEvents TrayIconPutOutTm As Timer
 End Class
